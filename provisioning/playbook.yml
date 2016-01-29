@@ -1,0 +1,26 @@
+---
+- hosts: development
+  gather_facts: no
+  become: yes
+  become_method: sudo
+  roles:
+    - role: apt
+      tags: apt
+    - role: requirements
+      tags: requirements
+    - role: ntp
+      tags: ntp
+    - role: rabbitmq
+      tags: rabbitmq
+    - role: redis
+      tags: redis
+    - role: nodejs
+      tags: nodejs
+    - role: erlang
+      tags: erlang
+    - role: elixir
+      tags: elixir
+    - role: phoenix
+      tags: phoenix
+    - role: postgresql
+      tags: postgresql

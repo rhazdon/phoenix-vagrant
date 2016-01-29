@@ -1,0 +1,8 @@
+- name: add nodejs 5.x repo
+  apt_repository: repo='deb https://deb.nodesource.com/node_5.x trusty main'
+- name: add nodejs 5.x repo key
+  apt_key: url=https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+- name: install nodejs
+  apt: name={{ item }} state=present update_cache=yes
+  with_items:
+    - nodejs

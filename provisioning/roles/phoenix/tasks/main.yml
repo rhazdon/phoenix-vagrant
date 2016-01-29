@@ -1,0 +1,9 @@
+- name: install local.hex package manager
+  become_user: vagrant
+  shell: mix local.hex --force
+  args:
+    creates: /home/vagrant/.mix/archives/hex.ez
+
+- name: install phoenix
+  become_user: vagrant
+  shell: mix archive.install https://github.com/phoenixframework/archives/raw/master/phoenix_new.ez --force

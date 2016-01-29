@@ -1,0 +1,9 @@
+---
+- name: install required packages
+  apt: name={{ item }} state=present
+  with_items:
+    - build-essential
+    - software-properties-common
+    - python-software-properties
+    - git
+    - inotify-tools

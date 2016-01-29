@@ -1,0 +1,29 @@
+---
+- name: install packages
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - postgresql
+    - libpq-dev
+    - python
+    - python-pip
+    - python-psycopg2
+  environment:
+    LC_ALL: en_US.UTF-8
+
+- name: ensure postgresql is running
+  service: name=postgresql state=running enabled=yes
+
+- name: create database user
+  become_user: postgres
+  postgresql_user: name=phoenix
+                   password=phoenix
+                   role_attr_flags=CREATEDB,NOSUPERUSER
+
+- name: create databse
+  become_user: postgres
+  postgresql_db: name=phoenix
+                 owner=phoenix
+                 template='template1'
+
+# Ensure that postgresql is restarted before we create databases and users
+- meta: flush_handlers
