@@ -7,4 +7,5 @@ I updated the playbooks and add some more roles.
 ## Usage
 
 1. Clone the project.
-2. <pre>$ vagrant up dev</pre>
+
+2. ``$ vagrant up dev``
